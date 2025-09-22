@@ -1,3 +1,4 @@
+import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import "./globals.css";
 import Link from "next/link";
 
@@ -11,9 +12,14 @@ export default function RootLayout({
       <body>
         <nav>
           <Link href="/authors">Autores</Link> |{" "}
-          <Link href="/crear">Crear Autor</Link>
+          <Link href="/crear">Crear Autor</Link> |{" "}
+          <Link href="/favoritos">Autores Favoritos</Link>
         </nav>
-        <main>{children}</main>
+        <main>
+          <FavoritesProvider>
+            {children}
+          </FavoritesProvider>
+        </main>
       </body>
     </html>
   );

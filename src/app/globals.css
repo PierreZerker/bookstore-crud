@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Monocraft';
+  src: url('/fonts/Monocraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Monocraft', monospace;
+}
+
+button:focus, input:focus, a:focus {
+  outline: 2px solid blue;
+  outline-offset: 2px;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,5 +39,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

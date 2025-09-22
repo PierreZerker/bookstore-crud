@@ -1,36 +1,52 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Bookstore CRUD - Parcial 1
 
-First, run the development server:
+## Arquitectura de la solución
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Dentro de la carpeta `app/` se encuentran las páginas principales:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* `/authors/favoritos` muestra los autores marcados como favoritos.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Los componentes reutilizables, como `AuthorForm` y `AuthorList`, están en `components/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+La lógica de negocio como el manejo de estado global (`FavoritesContext`) está en su propia carpeta y `contexts/`
 
-## Learn More
+Esta arquitectura favorece la separación de responsabilidades: las páginas controlan la navegación, los componentes renderizan la interfaz y contextos encapsulan la lógica de estado y conexión con la API.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Parte B – Accesibilidad
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+La opción implementada fue  **Accesibilidad** .
 
-## Deploy on Vercel
+Las mejoras incluidas son:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Navegación con teclado (todos los botones y enlaces son accesibles mediante `Tab`).
+* Uso de atributos  **ARIA** :
+  * `aria-label` en botones de acciones (eliminar, favoritos).
+  * `aria-pressed` en el botón de favoritos para indicar el estado.
+  * `aria-invalid` y `aria-describedby` en inputs con validación.
+* Mensajes de error se muestran con `role="alert"` para que los lectores de pantalla los detecten.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Validación:**
+
+Puedes usar el teclado para recorrer la aplicación, verificar que los botones indiquen su propósito con `aria-label` y que los campos vacíos en el formulario muestren mensajes de error accesibles.
+
+---
+
+## Instrucciones de ejecución
+
+### Frontend
+
+1. Instalar dependencias:
+
+   <pre class="overflow-visible!" data-start="2402" data-end="2431"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>npm install
+   </span></span></code></div></div></pre>
+2. Levantar la aplicación:
+
+   <pre class="overflow-visible!" data-start="2462" data-end="2491"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>npm run dev
+   </span></span></code></div></div></pre>
+3. Acceder en el navegador:
+
+   [http://localhost:3000](http://localhost:3000)
